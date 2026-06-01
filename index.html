@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Loja virtual de produtos de futebol com carrinho, filtros e layout responsivo para GitHub Pages." />
+  <title>FutStore | Loja de Futebol</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="topbar">
+    <p>Frete grátis acima de R$ 299 • Novidades em camisas e chuteiras</p>
+  </div>
+
+  <header class="header">
+    <div class="container nav">
+      <a href="#home" class="brand">
+        <img src="logo.png" alt="Logo FutStore" class="brand-logo" />
+        <span>FutStore</span>
+      </a>
+
+      <nav class="menu">
+        <a href="#produtos">Produtos</a>
+        <a href="#categorias">Categorias</a>
+        <a href="#destaques">Destaques</a>
+        <a href="#faq">FAQ</a>
+        <a href="profile.html">Perfil</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="search-button" id="focusSearch">Buscar</button>
+        <button class="login-button" id="openLoginBtn">Entrar</button>
+        <button class="profile-button" id="profileBtn">Perfil</button>
+        <div class="user-badge" id="userBadge" hidden>
+          Olá, <strong id="userGreeting">Usuário</strong>
+        </div>
+        <button class="cart-button" id="openCartBtn" aria-label="Abrir carrinho">
+          🛒 <span id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <aside class="login-modal" id="loginModal" aria-hidden="true">
+    <div class="login-overlay" id="loginOverlay"></div>
+    <div class="login-card">
+      <div class="login-header">
+        <div>
+          <h3>Login</h3>
+          <p>Use seu e-mail, nome e CPF para acessar seu perfil.</p>
+        </div>
+        <button id="closeLoginBtn" aria-label="Fechar login">✕</button>
+      </div>
+      <form id="loginForm">
+        <label>
+          Nome
+          <input type="text" id="userName" placeholder="Seu nome" required />
+        </label>
+        <label>
+          Email
+          <input type="email" id="userEmail" placeholder="Seu e-mail" required />
+        </label>
+        <label>
+          CPF
+          <input type="text" id="userCpf" placeholder="Seu CPF" inputmode="numeric" maxlength="11" pattern="\d{11}" title="CPF com 11 dígitos" required />
+        </label>
+        <button class="btn btn-primary" type="submit">Entrar</button>
+      </form>
+    </div>
+  </aside>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="badge">Coleção 2026</span>
+          <h1>Seu time, seu estilo, seu jogo.</h1>
+          <p>
+            Monte sua loja de artigos de futebol com visual moderno, carrinho funcional,
+            filtros de produtos e estrutura 100% compatível com GitHub Pages.
+          </p>
+          <div class="hero-actions">
+            <a href="#produtos" class="btn btn-primary">Ver produtos</a>
+            <a href="#categorias" class="btn btn-secondary">Explorar categorias</a>
+          </div>
+          <ul class="hero-highlights">
+            <li>✔ Carrinho com localStorage</li>
+            <li>✔ Filtros por categoria</li>
+            <li>✔ Layout responsivo</li>
+          </ul>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <span class="mini-pill">Oferta da semana</span>
+            <strong>Camisa do Flamengo</strong>
+          </div>
+          <div class="hero-jersey">
+            <img src="flamengocamisa.jpg" alt="Camisa do Flamengo" />
+          </div>
+          <div class="hero-card-bottom">
+            <div>
+              <small>A partir de</small>
+              <h3>R$ 249,90</h3>
+            </div>
+            <a href="#produtos" class="btn btn-primary btn-small">Comprar agora</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="categories" id="categorias">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Categorias</span>
+          <h2>Escolha por tipo de produto</h2>
+        </div>
+
+        <div class="category-grid">
+          <button class="category-card active" data-filter="todos">
+            <span>🏆</span>
+            <strong>Todos</strong>
+            <small>Catálogo completo</small>
+          </button>
+          <button class="category-card" data-filter="camisas">
+            <span>👕</span>
+            <strong>Camisas</strong>
+            <small>Clubes e seleções</small>
+          </button>
+          <button class="category-card" data-filter="chuteiras">
+            <span>🥾</span>
+            <strong>Chuteiras</strong>
+            <small>Campo e society</small>
+          </button>
+          <button class="category-card" data-filter="bolas">
+            <span>⚽</span>
+            <strong>Bolas</strong>
+            <small>Treino e jogo</small>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="catalog" id="produtos">
+      <div class="container">
+        <div class="catalog-toolbar">
+          <div>
+            <span class="section-tag">Produtos</span>
+            <h2>Catálogo em destaque</h2>
+          </div>
+          <div class="toolbar-controls">
+            <input type="text" id="searchInput" placeholder="Buscar por produto..." />
+            <select id="sortSelect">
+              <option value="default">Ordenar</option>
+              <option value="price-asc">Menor preço</option>
+              <option value="price-desc">Maior preço</option>
+              <option value="name-asc">Nome A-Z</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="product-grid" id="productGrid"></div>
+      </div>
+    </section>
+
+    <section class="highlights" id="destaques">
+      <div class="container highlight-grid">
+        <article class="highlight-card">
+          <h3>Pagamento facilitado</h3>
+          <p>Área pronta para você integrar links de pagamento, WhatsApp ou checkout externo.</p>
+        </article>
+        <article class="highlight-card">
+          <h3>Personalização rápida</h3>
+          <p>Altere textos, produtos, preços, cores e banner em poucos minutos.</p>
+        </article>
+        <article class="highlight-card">
+          <h3>Publicação simples</h3>
+          <p>Suba os arquivos no GitHub e ative o GitHub Pages sem precisar de servidor.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <div class="container newsletter-box">
+        <div>
+          <span class="section-tag">Novidades</span>
+          <h2>Receba promoções da FutStore</h2>
+          <p>Bloco visual pronto para newsletter. Você pode integrar com Formspree, Mailchimp ou outro serviço externo.</p>
+        </div>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Cadastro demonstrativo enviado com sucesso!');">
+          <input type="email" placeholder="Seu melhor e-mail" required />
+          <button class="btn btn-primary" type="submit">Cadastrar</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="faq" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">FAQ</span>
+          <h2>Perguntas frequentes</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>Esse site funciona no GitHub Pages?</summary>
+            <p>Sim. Ele usa apenas HTML, CSS e JavaScript puro, então roda normalmente como site estático.</p>
+          </details>
+          <details>
+            <summary>O carrinho salva os itens?</summary>
+            <p>Sim. Os itens ficam salvos no navegador usando localStorage.</p>
+          </details>
+          <details>
+            <summary>Posso trocar os produtos e preços?</summary>
+            <p>Sim. Basta editar o arquivo <code>script.js</code> para mudar catálogo, valores e descrições.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-panel">
+      <div class="cart-header">
+        <h3>Seu carrinho</h3>
+        <button id="closeCartBtn" aria-label="Fechar carrinho">✕</button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total</span>
+          <strong id="cartTotal">R$ 0,00</strong>
+        </div>
+        <button class="btn btn-primary checkout-btn" id="checkoutBtn">Finalizar pedido</button>
+      </div>
+    </div>
+  </aside>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="#home" class="brand brand-footer">
+          <img src="logo.png" alt="Logo FutStore" class="brand-logo" />
+          <span>FutStore</span>
+        </a>
+        <p>Template de e-commerce esportivo para publicar no GitHub Pages.</p>
+      </div>
+      <div>
+        <h4>Loja</h4>
+        <a href="#produtos">Produtos</a>
+        <a href="#categorias">Categorias</a>
+      </div>
+      <div>
+        <h4>Atendimento</h4>
+        <a href="#faq">FAQ</a>
+        <a href="https://wa.me/5500000000000" target="_blank" rel="noreferrer">WhatsApp</a>
+      </div>
+    </div>
+    <p class="copyright">© 2026 FutStore. Projeto estático demonstrativo.</p>
+  </footer>
+
+  <script src="products.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

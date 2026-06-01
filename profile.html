@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Perfil do usuário FutStore." />
+  <title>Perfil | FutStore</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="topbar">
+    <p>Frete grátis acima de R$ 299 • Novidades em camisas e chuteiras</p>
+  </div>
+
+  <header class="header">
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <img src="logo.png" alt="Logo FutStore" class="brand-logo" />
+        <span>FutStore</span>
+      </a>
+
+      <nav class="menu">
+        <a href="index.html#produtos">Produtos</a>
+        <a href="index.html#categorias">Categorias</a>
+        <a href="index.html#destaques">Destaques</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="profile.html">Perfil</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="search-button" id="focusSearch">Buscar</button>
+        <button class="login-button" id="openLoginBtn">Entrar</button>
+        <button class="profile-button" id="profileBtn">Perfil</button>
+        <div class="user-badge" id="userBadge" hidden>
+          Olá, <strong id="userGreeting">Usuário</strong>
+        </div>
+        <button class="cart-button" id="openCartBtn" aria-label="Abrir carrinho">
+          🛒 <span id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <aside class="login-modal" id="loginModal" aria-hidden="true">
+    <div class="login-overlay" id="loginOverlay"></div>
+    <div class="login-card">
+      <div class="login-header">
+        <div>
+          <h3>Login</h3>
+          <p>Use seu e-mail, nome e CPF para acessar seu perfil.</p>
+        </div>
+        <button id="closeLoginBtn" aria-label="Fechar login">✕</button>
+      </div>
+      <form id="loginForm">
+        <label>
+          Nome
+          <input type="text" id="userName" placeholder="Seu nome" required />
+        </label>
+        <label>
+          Email
+          <input type="email" id="userEmail" placeholder="Seu e-mail" required />
+        </label>
+        <label>
+          CPF
+          <input type="text" id="userCpf" placeholder="Seu CPF" inputmode="numeric" maxlength="11" pattern="\d{11}" title="CPF com 11 dígitos" required />
+        </label>
+        <button class="btn btn-primary" type="submit">Entrar</button>
+      </form>
+    </div>
+  </aside>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-panel">
+      <div class="cart-header">
+        <h3>Seu carrinho</h3>
+        <button id="closeCartBtn" aria-label="Fechar carrinho">✕</button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total</span>
+          <strong id="cartTotal">R$ 0,00</strong>
+        </div>
+        <button class="btn btn-primary checkout-btn" id="checkoutBtn">Finalizar pedido</button>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <section class="profile-page" id="profilePanel">
+      <div class="container profile-card">
+        <div class="profile-sidebar">
+          <span class="section-tag">Perfil</span>
+          <h2 id="profileHeadline">Faça login para acessar seu perfil</h2>
+          <p id="profileDescription">Uma página exclusiva com seus dados, status e histórico de conta.</p>
+          <button class="btn btn-secondary btn-small" id="gotoLoginBtn" type="button">Acessar conta</button>
+        </div>
+        <div class="profile-details">
+          <div class="profile-summary" id="profileSummary" hidden>
+            <div class="profile-row">
+              <span>Nome</span>
+              <strong id="profileName"></strong>
+            </div>
+            <div class="profile-row">
+              <span>Email</span>
+              <strong id="profileEmail"></strong>
+            </div>
+            <div class="profile-row">
+              <span>CPF</span>
+              <strong id="profileCpf"></strong>
+            </div>
+            <div class="profile-row">
+              <span>Membro desde</span>
+              <strong id="profileJoined"></strong>
+            </div>
+            <div class="profile-row">
+              <span>Status</span>
+              <strong id="profileStatus">Ativo</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="brand brand-footer">
+          <img src="logo.png" alt="Logo FutStore" class="brand-logo" />
+          <span>FutStore</span>
+        </a>
+        <p>Template de e-commerce esportivo para publicar no GitHub Pages.</p>
+      </div>
+      <div>
+        <h4>Loja</h4>
+        <a href="index.html#produtos">Produtos</a>
+        <a href="index.html#categorias">Categorias</a>
+      </div>
+      <div>
+        <h4>Atendimento</h4>
+        <a href="index.html#faq">FAQ</a>
+        <a href="https://wa.me/5500000000000" target="_blank" rel="noreferrer">WhatsApp</a>
+      </div>
+    </div>
+    <p class="copyright">© 2026 FutStore. Projeto estático demonstrativo.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
